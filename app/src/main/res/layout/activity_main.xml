@@ -410,6 +410,15 @@
                         android:id="@+id/tvidead"
                         android:text=""/>
 
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+                    </ScrollView>
 
 
                 </LinearLayout>
@@ -420,26 +429,33 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="315dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.0">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
 
             <com.leo.simplearcloader.SimpleArcLoader
                 android:id="@+id/loader"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
                 android:visibility="gone"
                 app:arc_style="simple_arc">
 
@@ -453,7 +469,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_marginTop="50dp"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/white"
                     android:orientation="vertical">
 
                     <TextView
@@ -628,41 +646,74 @@
                         android:layout_marginTop="5dp"
                         android:background="@color/colorPrimary" />
 
-                    <ListView
-                        android:id="@+id/myList"
-                        android:layout_width="match_parent"
-                        android:layout_height="212dp">
 
-                    </ListView>
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Data" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp">
+
+                        <Button
+                            android:id="@+id/button"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_margin="8dp"
+                            android:background="@color/colorAccent"
+                            android:onClick="PlacesBtnClicked"
+                            android:text="Places I visited"
+                            android:textSize="18sp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp">
+
+                        <Button
+                            android:id="@+id/button2"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_margin="8dp"
+                            android:background="@color/colorAccent"
+                            android:onClick="freindsBtnClicked"
+
+                            android:text="friends i meet"
+                            android:textSize="18sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp">
+
+                        <Button
+                            android:id="@+id/button3"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_margin="8dp"
+                            android:background="@color/colorAccent"
+                            android:onClick="vehiclesBtnClicked"
+                            android:text="Vehicles i travelled"
+                            android:textSize="18sp" />
+                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>
 
+
             </ScrollView>
-
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-6164080693457262/2318504671"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3">
-
-    </com.google.android.gms.ads.AdView>
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

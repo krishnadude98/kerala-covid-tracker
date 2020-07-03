@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="5">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        android:text="Are you gooing to Meet someone?"
+        android:layout_weight="1"
+        >
+
+    </TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:hint="Freind Name If Yes"
+        android:id="@+id/Efriend">
+
+    </EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Vehicle Used"
+
+        android:layout_weight="1"
+        >
+
+    </TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:hint="If Using Vehicle?"
+        android:id="@+id/Evehicle">
+
+    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:id="@+id/OkClicked"
+            android:text="Okey?"
+            >
+
+        </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:id="@+id/cancelClicked"
+            android:text="Cancel"
+            >
+
+        </Button>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

@@ -22,7 +22,7 @@
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/averia_serif_libre_bold"
                 android:text="ZONE:"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textColor="@android:color/background_dark"
                 android:textSize="15sp">
 
             </TextView>
@@ -48,10 +48,10 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Place:"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused">
+                android:textColor="@android:color/background_dark">
 
             </TextView>
 
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Cases:"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused">
+                android:textColor="@android:color/background_dark">
 
             </TextView>
 
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recovered:"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused">
+                android:textColor="@android:color/background_dark">
 
             </TextView>
 
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Deaths:"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused">
+                android:textColor="@android:color/background_dark">
 
             </TextView>
 

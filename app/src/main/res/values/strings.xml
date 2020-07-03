@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Kerala Covid Tracker</string>
+    <string name="app_name">hari_Covid19</string>
     <string name="india_total">India Total</string>
+    <string name="submit">SUBMIT</string>
 </resources>

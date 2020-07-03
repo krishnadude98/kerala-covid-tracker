@@ -1,4 +1,4 @@
-package com.hari.keralacovidtracker
+package com.hari.hari_Covid19
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
