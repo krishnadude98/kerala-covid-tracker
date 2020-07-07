@@ -20,7 +20,8 @@
         android:layout_weight="1"
         android:layout_margin="8dp"
         android:hint="Freind Name If Yes"
-        android:id="@+id/Efriend">
+        android:id="@+id/Efriend"
+        >
 
     </EditText>
     <TextView
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="Vehicle Used"
+
 
         android:layout_weight="1"
         >
@@ -39,7 +41,8 @@
         android:layout_weight="1"
         android:layout_margin="8dp"
         android:hint="If Using Vehicle?"
-        android:id="@+id/Evehicle">
+        android:id="@+id/Evehicle"
+        >
 
     </EditText>
     <LinearLayout

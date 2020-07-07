@@ -16,11 +16,9 @@ import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.ScrollView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -195,7 +193,7 @@ class MainActivity : AppCompatActivity() {
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            Environment.getRootDirectory()
+
             val latitude= location.latitude.toString()
             val longitude= location.longitude.toString()
 
@@ -204,8 +202,11 @@ class MainActivity : AppCompatActivity() {
             val count= spreference.getInt("count",DEFAULT)
             //Code to get previous location
             val prevSharedpreference:SharedPreferences= this@MainActivity.getSharedPreferences("PrevLocData", Context.MODE_PRIVATE)
-            val Prevlatitude=prevSharedpreference.getInt("latitude",0)
-            val Prevlongitude=prevSharedpreference.getInt("longitude",0)
+            val Prevlatitude=prevSharedpreference.getString("latitude","0")
+            val Prevlongitude=prevSharedpreference.getString("longitude","0")
+            Log.d("PrevLat",Prevlatitude.toString())
+            Log.d("PrevLong",Prevlongitude.toString())
+
             //Code to sget 2nd counter
             //counter 2 is for friend
             val counter2:SharedPreferences= getSharedPreferences("counter2", Context.MODE_PRIVATE)
@@ -223,45 +224,78 @@ class MainActivity : AppCompatActivity() {
             editor.putString("locLong$count",longitude)
             editor.commit()
             Log.d("SAVED",latitude+longitude)
-            val distance= getKilometeres(latitude.toDouble(),longitude.toDouble(),Prevlatitude.toDouble(),Prevlongitude.toDouble())*1000
+            val distance= getKilometeres(latitude.toDouble(),longitude.toDouble(),Prevlatitude!!.toDouble(),Prevlongitude!!.toDouble())*1000
+            Log.d("DISTANCE",distance.toString())
             if(distance>10){
+
+
+
+
+
                 val mDialogView=LayoutInflater.from(this@MainActivity).inflate(R.layout.popup,null)
+
                 val mBuilder= AlertDialog.Builder(this@MainActivity).setView(mDialogView).setTitle("Going Out??")
                 val mAlertDialog=mBuilder.show()
-                mDialogView.OkClicked.setOnClickListener {
-                    val sharedPreference1:SharedPreferences=getSharedPreferences("friendD", Context.MODE_PRIVATE)
-                    val editor1= sharedPreference1.edit()
-                    val sharedPreference2:SharedPreferences=getSharedPreferences("vehicleD", Context.MODE_PRIVATE)
-                    val editor2= sharedPreference2.edit()
+                val sharedPreference1:SharedPreferences=getSharedPreferences("friendD", Context.MODE_PRIVATE)
+                val editor1= sharedPreference1.edit()
+                val sharedPreference2:SharedPreferences=getSharedPreferences("vehicleD", Context.MODE_PRIVATE)
+                val editor2= sharedPreference2.edit()
 
-                    if(Efriend.text.isNotEmpty()&&Evehicle.text.isNotEmpty()){
-                        editor1.putString("friend$count2",Efriend.text.toString())
+                val efriend= mDialogView.findViewById<EditText>(R.id.Efriend)
+                val evehicle=mDialogView.findViewById<EditText>(R.id.Evehicle)
+                val button:Button=mDialogView.findViewById(R.id.OkClicked)
+               button.setOnClickListener {
+
+
+
+                    if(efriend.text.toString().isNotEmpty()&&evehicle.text.toString().isNotEmpty()){
+                        Log.d("IFBOTH","YES")
+                        editor1.putString("friend$count2",efriend?.text.toString())
+
                         addCount2(count2)
                         editor1.commit()
-                        editor2.putString("vehicle$count3",Evehicle.text.toString())
+                        editor2.putString("vehicle$count3",evehicle?.text.toString())
                         addCount3(count3)
                         editor2.commit()
                         mAlertDialog.dismiss()
 
-                    }else if(Efriend.text.isNotEmpty()){
-                        editor1.putString("friend$count2",Efriend.text.toString())
+
+
+                    }else if(efriend.text.toString().isNotEmpty()){
+                        editor1.putString("friend$count2",efriend.getText().toString())
                         addCount2(count2)
                         editor1.commit()
+                        Log.d("IFFRIEND",efriend.text.toString())
                         mAlertDialog.dismiss()
-                    }else{
-                        editor2.putString("vehicle$count3",Evehicle.text.toString())
+
+                    }else if(evehicle.text.toString().isNotEmpty()) {
+                        editor2.putString("vehicle$count3", evehicle.getText().toString())
                         addCount3(count3)
                         editor2.commit()
+                        Log.d("IFVEHICLE",efriend.text.toString())
                         mAlertDialog.dismiss()
+
+                    }
+                    else{
+                        val value=efriend.getText().toString()
+                        Log.d("NOTHINGWORKED","fcked +$value")
+                        Log.d("Efriend",efriend.text.toString())
+                        Log.d("Evehicle",evehicle.text.toString())
                     }
 
+
+
                 }
+
+
                 mDialogView.cancelClicked.setOnClickListener {
                     mAlertDialog.dismiss()
                 }
+
             }
             addCount(count)
             loadNewCoordinates(latitude,longitude)
+
 
 
 
@@ -291,11 +325,12 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun loadNewCoordinates(lat:String,long:String){
-        Environment.getRootDirectory()
+
         val sharedprefences:SharedPreferences= getSharedPreferences("PrevLocData", Context.MODE_PRIVATE)
         val editor:SharedPreferences.Editor=sharedprefences.edit()
         editor.putString("latitude",lat)
-        editor.putString("latitude",long)
+        editor.putString("longitude",long)
+        editor.commit()
     }
 
 
